@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>N-Dimensional Modulation Explorer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      overflow: hidden;
+      background: #000;
+    }
+    canvas {
+      display: block;
+    }
+    #blocker {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+    #instructions {
+      color: #fff;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      max-width: 500px;
+      padding: 2rem;
+    }
+    #instructions h1 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: normal;
+    }
+    #instructions p {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: #888;
+      margin-bottom: 0.5rem;
+    }
+    #instructions .key {
+      display: inline-block;
+      background: #333;
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      margin: 0 0.1rem;
+    }
+    #hud {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      color: #fff;
+      font-family: 'Courier New', monospace;
+      font-size: 0.75rem;
+      z-index: 50;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+    #hud.hidden {
+      display: none;
+    }
+    .param {
+      margin-bottom: 0.25rem;
+    }
+    .param.active {
+      color: #0ff;
+    }
+    .param-name {
+      display: inline-block;
+      width: 120px;
+    }
+    .param-value {
+      color: #888;
+    }
+    #crosshair {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 50;
+      pointer-events: none;
+    }
+    #crosshair::before,
+    #crosshair::after {
+      content: '';
+      position: absolute;
+      background: rgba(255, 255, 255, 0.7);
+    }
+    #crosshair::before {
+      width: 12px;
+      height: 2px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    #crosshair::after {
+      width: 2px;
+      height: 12px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    #crosshair.active::before,
+    #crosshair.active::after {
+      background: #0ff;
+    }
+  </style>
+  <script type="module" crossorigin src="/assets/index-BCHlBFYR.js"></script>
+</head>
+<body>
+  <div id="blocker">
+    <div id="instructions">
+      <h1>N-DIMENSIONAL MODULATION EXPLORER</h1>
+      <p>Click to enter</p>
+      <p style="margin-top: 1rem;">
+        <span class="key">W</span><span class="key">A</span><span class="key">S</span><span class="key">D</span> Move
+        <span class="key">Space</span> Up <span class="key">Shift</span> Down
+      </p>
+      <p>
+        <span class="key">1-9, 0</span> Select dimension
+        <span class="key">↑↓</span> Adjust value
+      </p>
+      <p>
+        <span class="key">H</span> Toggle HUD
+        <span class="key">R</span> Reset
+      </p>
+    </div>
+  </div>
+  <div id="hud"></div>
+  <div id="crosshair"></div>
+</body>
+</html>
